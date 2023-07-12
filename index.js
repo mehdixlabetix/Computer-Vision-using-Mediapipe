@@ -77,7 +77,7 @@ function enableCam(event) {
 }
 let lastVideoTime = -1;
 let results = undefined;
-console.log(video);
+
 async function predictWebcam() {
     canvasElement.style.width = video.videoWidth;
     canvasElement.style.height = video.videoHeight;
@@ -92,7 +92,6 @@ async function predictWebcam() {
     if (lastVideoTime !== video.currentTime) {
         lastVideoTime = video.currentTime;
         results = handLandmarker.detectForVideo(video, startTimeMs);
-       if(results.landmarks.length) console.log(results.landmarks[0][8]);
     }
     canvasCtx.save();
     canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
@@ -126,7 +125,7 @@ setInterval(function (){
         px = -results.landmarks[0][8].x*1500 + x;
         py = results.landmarks[0][8].y*1000 - y;
     }
-    console.log("hani dkhalet");
+
         // sets the image cursor to new relative position
     cursor.style.left = (px + x) + "px";
     cursor.style.top = (py + y) + "px";
